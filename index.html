@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>EE Bucket</title>
+		<link rel="stylesheet" href="main.css" />
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<script src="js/PlayerIOClient.development.js"></script>
+		<script src="js/jquery-3.2.1.js"></script>
+		<script src="js/BlockHandler.js"></script>
+		<script src="js/app.js"></script>
+	</head>
+	<body class="home">
+		<div id="login">
+			<form>
+				<h2>EE Bucket</h2>
+				<input type="text" placeholder="email" id="email"/>
+				<input type="password" placeholder="password" id="password"/>
+				<input type="text" placeholder="roomID" id="roomID"/>
+				<button onclick="check(); return false;" autocomplete="off" class="fa fa-sign-in" id="loginBtn"></button>
+				<p id="msgNote">*New window will pop-up</p>
+				<p id="msgError"></p>
+			</form>
+		</div>
+		<table>
+			<tr>
+			    <th>Tools</th>
+				<th>Info</th>
+			</tr>
+			<tr>
+			    <td><img src="icons/0.png"></td>
+			    <td>Default. No special properties.</td>
+			</tr>
+			<tr>
+			    <td><img src="icons/1.png"></td>
+			    <td>Fill Tool; Placing a block will fill the foreground color with the newly placed ID.</td>
+			</tr>
+			<tr>
+			    <td><img src="icons/2.png"></td>
+			    <td>Rectangle; Placing two identical blocks will fill the area between them.</td>
+			</tr>
+			<tr>
+			    <td><img src="icons/3.png"></td>
+			    <td>Selection is made between the last 2 placed blocks. Must be ON to enable Cut, Copy, & Paste</td>
+			</tr>
+			<tr>
+			    <td><img src="icons/4.png"></td>
+			    <td>Copies + erases selected area.</td>
+			</tr>
+			<tr>
+			    <td><img src="icons/5.png"></td>
+			    <td>Copies selected area.</td>
+			</tr>
+			<tr>
+			    <td><img src="icons/6.png"></td>
+			    <td>Pastes copied blocks starting from the last select point.</td>
+			</tr>
+		</table>
+	</body>
+</html>

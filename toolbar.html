@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="main.css" />
+		<script src="js/jquery-3.2.1.js"></script>
+		<script>
+			function setTool(tool) {
+				if (window.opener.tool == 3) {
+					window.opener.erasePoints();
+					$('#tools :button').prop("disabled", true);
+				}
+				window.opener.tool = tool;
+			}
+
+			function toolsEnabled(enabled) {
+				if (!enabled) {
+					$('#tools :input').prop("disabled", true);
+					$('#tools label').css('opacity', '0.5');
+				}
+				else {
+					if (window.opener.tool == 3) {
+						$('#tools :input').prop("disabled", false);
+					}
+					else $('#tools :radio, :input[type="number"]').prop("disabled", false);
+					$('#tools label').css('opacity', '1');
+				}
+				window.opener.enabled = enabled;
+			}
+
+			function updateBPS(value) {
+				if (window.opener.BH !== null) {
+					window.opener.BH.BPS = Math.min(999, Math.max(1, value));;	
+				}
+			}
+		</script>
+	</head>
+	<body class="toolbar">
+		<div id="tools"> 
+			<input type="radio" name="tool" id="none" onclick="setTool(0)" checked="true" /><label for="none"><img src="icons/0.png"></label> 
+			<input type="radio" name="tool" id="fill" onclick="setTool(1)" /><label for="fill"><img src="icons/1.png"></label> 
+			<input type="radio" name="tool" id="rectangle" onclick="setTool(2)" /><label for="rectangle"><img src="icons/2.png"></label> 
+			<input type="radio" name="tool" id="select" onclick="setTool(3)" /><label for="select"><img src="icons/3.png"></label> 
+			<button id="cut" onclick="window.opener.copy(true)" disabled="true"><img src="icons/4.png"></button> 
+			<button id="copy" onclick="window.opener.copy(false)" disabled="true"><img src="icons/5.png"></button> 
+			<button id="paste" onclick="window.opener.paste()" disabled="true"><img src="icons/6.png"></button> 
+			<span style="margin-left:5px">BPS:</span><input type="number" min="1" max="999" value="20" id="inputdelay" onchange="updateBPS(this.value)" /> </div>
+	</body>
+</html>
