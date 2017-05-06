@@ -15,7 +15,7 @@ function check() {
 
 function connect() {
 	loginButton("pending");
-	$("#msgError").innerHTML = "";
+	$("#msgError").html = "";
 	var RoomID = $("#roomID").val();
 	var Email = $("#email").val();
 	var Password = $("#password").val();
@@ -38,7 +38,7 @@ function connect() {
 							disconnect();
 						}
 						else {
-							BH = new BlockHandler(connection, m.getInt(5), m.getInt(22), m.getInt(23), 20, m);
+							BH = new BlockHandler(connection, m.getInt(5), m.getInt(22), m.getInt(23), 100, m);
 							tool = 0;
 							openWinTools();
 							loginButton("connected");
