@@ -9,15 +9,8 @@ tool = 0,
 enabled = true;
 
 function check() {
-	var Email = document.getElementById("email").value;
-	if ((Email == "guest") || (Email == "guest@lol.dk")) {
-		document.getElementById("email").value = "";
-		document.getElementById("password").value = "";
-	}
-	else {
-		if (connection === null) connect();
-		else disconnect();
-	}
+	if (connection === null) connect();
+	else disconnect();
 }
 
 function connect() {
