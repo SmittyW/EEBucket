@@ -49,7 +49,7 @@ function connect() {
 					}
 					else if (m.type == "add") {
 						var name = m.getString(1);
-						if (name == ownerName) {
+						if (name == ownerName && m.getInt(0) != BH.botID) {
 							ownerID = m.getInt(0);	
 						}
 					}
