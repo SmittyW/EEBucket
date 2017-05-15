@@ -91,23 +91,12 @@ function callbackError(error) {
 }
 
 function runTool() {
-	if (winTools && enabled) {
-	switch(tool) {
-		case 0:
-		break;
-		case 1:
-			fill(lastBlock.l, lastBlock.x, lastBlock.y, lastBlock);
-		break;
-		case 2:
-			rectangle();
-		break;
-		case 3:
-			drawPoints();
-		break;
-		default:
-		console.log("failed");
-		break;
-	}
+	if (winTools && enabled && tool > 0) {
+		switch(tool) {
+			case 1: fill(lastBlock.l, lastBlock.x, lastBlock.y, lastBlock); break;
+			case 2: rectangle(); break;
+			case 3: drawPoints(); break;
+		}
 	}
 }
 
@@ -266,17 +255,20 @@ function loginButton(status) {
 	switch (status) {
 	case "disconnected":
 		$("#loginBtn").prop("disabled", false);
-		$("#loginBtn").css("background-color", "#e74c3c");
+		$("#loginBtn").css("background-color", "#8ee002");
 		$("#loginBtn").attr("class", "fa fa-sign-in");
+		$("#loginBtn").css("cursor", "pointer");
 		break;
 	case "pending":
 		$("#loginBtn").prop("disabled", true);
 		$("#loginBtn").css("background-color", "#aaaaaa");
+		$("#loginBtn").css("cursor", "default");
 		break;
 	case "connected":
 		$("#loginBtn").prop("disabled", false);
-		$("#loginBtn").css("background-color", "#8ee002");
+		$("#loginBtn").css("background-color", "#e74c3c");
 		$("#loginBtn").attr("class", "fa fa-sign-out fa-flip-horizontal");
+		$("#loginBtn").css("cursor", "pointer");
 		break;
 	}
 }
