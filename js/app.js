@@ -7,6 +7,8 @@ points = [],
 copiedBlocks = [],
 tool = 0,
 enabled = true;
+ownerName = "";
+ownerID = 0;
 
 function check() {
 	if (connection === null) connect();
@@ -33,15 +35,22 @@ function connect() {
 				
 				connection.addMessageCallback("*", function (m) {
 					if (m.type == "init") {
-						if (m.getString(0) != m.getString(17)) {
-							$("#msgError").html("Account must be World Owner");
-							disconnect();
-						}
-						else {
+						if (m.getBoolean(19)) {
 							BH = new BlockHandler(connection, m.getInt(5), m.getInt(22), m.getInt(23), 100, m);
 							tool = 0;
+							ownerName = m.getString(17);
 							openWinTools();
 							loginButton("connected");
+						}
+						else {
+							$("#msgError").html("Account must be World Owner");
+							disconnect();	
+						}
+					}
+					else if (m.type == "add") {
+						var name = m.getString(1);
+						if (name == ownerName) {
+							ownerID = m.getInt(0);	
 						}
 					}
 					else if (m.type == "b" || m.type == "br" || m.type == "bc" || m.type == "bs" || m.type == "lb" || m.type == "pt" || m.type == "ts" || m.type == "wp") {
@@ -54,7 +63,7 @@ function connect() {
 						else {
 							BH.message(m, "block");
 						}
-						if(BH.placerID != BH.botID)
+						if(BH.placerID == ownerID)
 						{
 							runTool();
 						}
