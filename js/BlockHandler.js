@@ -127,7 +127,7 @@ BlockHandler = function(con, botID, width, height, BPS, msg) {
 			if ((tool != 3 && tool != 1) || !enabled) {
 				this.world[x][y][l] = {id:id, args:args};
 			}
-			if (pid != this.botID) {
+			if (pid != this.botID && pid == ownerID) {
 				lastBlock = {l:l, x:x, y:y, id:id, args:args};
 			}
 		}
