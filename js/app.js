@@ -6,8 +6,8 @@ lastBlock = null,
 points = [],
 copiedBlocks = [],
 tool = 0,
-enabled = true;
-ownerName = "";
+enabled = true,
+ownerName = "",
 ownerID = 0;
 
 function check() {
