@@ -260,7 +260,7 @@ function loginButton(status) {
 	case "disconnected":
 		$("#loginBtn").prop("disabled", false);
 		$("#loginBtn").css("background-color", "#8ee002");
-		$("#loginBtn").attr("class", "fa fa-sign-in");
+		$("#loginBtn").html("Connect");
 		$("#loginBtn").css("cursor", "pointer");
 		break;
 	case "pending":
@@ -271,7 +271,7 @@ function loginButton(status) {
 	case "connected":
 		$("#loginBtn").prop("disabled", false);
 		$("#loginBtn").css("background-color", "#e74c3c");
-		$("#loginBtn").attr("class", "fa fa-sign-out fa-flip-horizontal");
+		$("#loginBtn").html("Disconnect");
 		$("#loginBtn").css("cursor", "pointer");
 		break;
 	}
