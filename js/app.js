@@ -69,6 +69,9 @@ function connect() {
 							runTool();
 						}
 					}
+					else if (m.type == "reset") {
+						BH.message(m, "serialised");	
+					}
 				});
 			}, callbackError);
 		}, callbackError);
