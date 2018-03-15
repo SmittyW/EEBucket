@@ -35,18 +35,12 @@ function connect() {
 				
 				connection.addMessageCallback("*", function (m) {
 					if (m.type == "init") {
-						if (m.getBoolean(19)) {
-							connection.send("init2");
-							BH = new BlockHandler(connection, m.getInt(5), m.getInt(22), m.getInt(23), 100, m);
-							tool = 0;
-							ownerName = m.getString(17);
-							openWinTools();
-							loginButton("connected");
-						}
-						else {
-							$("#msgError").html("Account must be World Owner");
-							disconnect();	
-						}
+						connection.send("init2");
+						BH = new BlockHandler(connection, m.getInt(5), m.getInt(22), m.getInt(23), 100, m);
+						tool = 0;
+						ownerName = m.getString(17);
+						openWinTools();
+						loginButton("connected");
 					}
 					else if (m.type == "add") {
 						var name = m.getString(1);
