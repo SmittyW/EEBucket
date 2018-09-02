@@ -58,7 +58,7 @@ function connect() {
 						else {
 							BH.message(m, "block");
 						}
-						if(BH.placerID == ownerID)
+						//if(BH.placerID == ownerID)
 						{
 							runTool();
 						}
